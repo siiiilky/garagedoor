@@ -10,8 +10,8 @@ log = logging.getLogger('mqtt_alarm')
 log.addHandler(JournalHandler())
 log.setLevel(logging.INFO)
 
-MQTT_HOST = "10.0.0.20"
-MQTT_TOPIC_PREFIX = "home/alarm/"
+MQTT_HOST = "10.100.30.6"
+MQTT_TOPIC_PREFIX = "home/garagedoor/"
 MQTT_CLIENT_ID = ""
 MQTT_PAYLOADS = {
   0: "off",
