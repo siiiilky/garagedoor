@@ -21,8 +21,8 @@ MQTT_PAYLOADS = {
 
 # Dictionary of GPIO PIN to mqtt topic
 PIN_MAP = {
-  7: "7",
-  11: "11",
+  7: "door-up",
+  11: "door-down",
   12: "12",
   13: "13",
   16: "16",
