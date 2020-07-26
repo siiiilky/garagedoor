@@ -12,7 +12,7 @@ log.addHandler(JournalHandler())
 log.setLevel(logging.INFO)
 
 MQTT_HOST = "10.100.30.6"
-MQTT_TOPIC_PREFIX = "home/garagedoor/"
+MQTT_TOPIC_PREFIX = "garagedoor"
 MQTT_CLIENT_ID = ""
 MQTT_PAYLOADS = {
   0: "off",
