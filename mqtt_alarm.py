@@ -40,8 +40,10 @@ def state_change_hadler(channel):
 
   if state:
     log.info("Rising edge detected on {}".format(channel))
+    print("Rising edge detected on {}".format(channel))
   else:
     log.info("Falling edge detected on {}".format(channel))
+    print("Falling edge detected on {}".format(channel))
 
   publish_event(channel, state)
 
