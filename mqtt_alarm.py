@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import private as priv
 import RPi.GPIO as GPIO
 import logging
 import paho.mqtt.publish as publish
@@ -20,16 +21,16 @@ MQTT_PAYLOADS = {
 
 # Dictionary of GPIO PIN to mqtt topic
 PIN_MAP = {
-  7: "front_door",
-  11: "garage_entry_door",
-  12: "laundry_room_window",
-  13: "kitchen_window",
-  16: "family_room_window",
-  18: "living_room_window",
-  22: "office_window",
-  29: "workout_room_window",
-  32: "dressing_room_window",
-  35: "upstairs_hallway_motion",
+  7: "7",
+  11: "11",
+  12: "12",
+  13: "13",
+  16: "16",
+  18: "18",
+  22: "22",
+  29: "29",
+  32: "32",
+  35: "35",
 }
 
 GPIO.setmode(GPIO.BOARD)
@@ -48,9 +49,10 @@ def publish_event(pin, state):
   topic = MQTT_TOPIC_PREFIX + PIN_MAP[pin]
   payload = MQTT_PAYLOADS[state]
 
-  publish.single(topic, payload, hostname=MQTT_HOST, retain=True, qos=1)
+  publish.single(topic, payload, hostname=MQTT_HOST, retain=True, qos=1, auth = {'username':"homeassistant", 'password':priv.password})
 
   log.info("Published event, topic={}, payload={}, hostname={}".format(topic, payload, MQTT_HOST))
+  print ("Published event, topic={}, payload={}, hostname={}".format(topic, payload, MQTT_HOST))
 
 for pin, name in PIN_MAP.items():
   GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
