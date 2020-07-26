@@ -12,7 +12,7 @@ log.addHandler(JournalHandler())
 log.setLevel(logging.INFO)
 
 MQTT_HOST = "10.100.30.6"
-MQTT_TOPIC_PREFIX = "garagedoor/"
+MQTT_TOPIC_PREFIX = "homeassistant/garagedoor/"
 MQTT_CLIENT_ID = "garagepi"
 MQTT_PAYLOADS = {
   0: "off",
