@@ -14,7 +14,7 @@ log.setLevel(logging.INFO)
 
 MQTT_HOST = "10.100.30.6"
 MQTT_TOPIC_PREFIX = "garagedoor/door-up"
-MQTT_TOPIC_PREFIX2 = "garagedoor/door-up"
+MQTT_TOPIC_PREFIX2 = "garagedoor/door-down"
 MQTT_CLIENT_ID = "garagepi"
 
 GPIO.setmode(GPIO.BOARD)
