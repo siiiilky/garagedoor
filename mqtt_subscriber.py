@@ -14,13 +14,14 @@ log.setLevel(logging.INFO)
 
 MQTT_HOST = "10.100.30.6"
 MQTT_TOPIC_PREFIX = "garagedoor/door-up"
+MQTT_TOPIC_PREFIX2 = "garagedoor/door-up"
 MQTT_CLIENT_ID = "garagepi"
 
 GPIO.setmode(GPIO.BOARD)
 
 def on_connect(client, userdata, flags, rc):
   print("Connected with result code {0}".format(str(rc)))
-  client.subscribe(MQTT_TOPIC_PREFIX)
+  client.subscribe(MQTT_TOPIC_PREFIX MQTT_TOPIC_PREFIX2)
 
 def on_message(client, userdata, msg):
   print("Message received-> " + msg.topic + " " + str(msg.payload))  # Print a received msg
