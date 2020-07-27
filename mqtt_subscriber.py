@@ -17,7 +17,8 @@ MQTT_TOPIC_PREFIX = "garagedoor/door-up"
 MQTT_TOPIC_PREFIX2 = "garagedoor/door-down"
 MQTT_CLIENT_ID = "garagepi"
 
-GPIO.setmode(GPIO.BOARD)
+GPIOup.setmode(GPIO.BOARD)
+GPIOdown.setmode(GPIO.BOARD)
 
 def on_connect(client, userdata, flags, rc):
   print("Connected with result code {0}".format(str(rc)))
