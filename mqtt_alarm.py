@@ -50,10 +50,10 @@ def publish_event(pin, state):
   print ("Published event, topic={}, payload={}, hostname={}".format(topic, payload, MQTT_HOST))
 
 for pin, name in PIN_MAP.items():
-  #GPIO.setup(pin, GPIO.OUT, pull_up_down=GPIO.PUD_DOWN)
-  #GPIO.add_event_detect(pin, GPIO.BOTH, callback=state_change_hadler, bouncetime=100)
+  GPIO.setup(pin, GPIO.OUT)
+  GPIO.add_event_detect(pin, GPIO.BOTH, callback=state_change_hadler, bouncetime=100)
 
-  #state = GPIO.input(pin)
+  state = GPIO.input(pin)
 
   #log.info("Mapped pin {:0>2d} to {}".format(pin, name))
   #log.info("... state {}".format(state))
