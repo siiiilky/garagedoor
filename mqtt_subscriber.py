@@ -29,33 +29,17 @@ def on_message(client, userdata, msg):
   if 'door-up' in msg.topic:
     if 'off' in msg.payload:
       print 'Door up Turn Off - disable GPIO Here'
-      GPIO.setup(priv.pinup, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-      GPIO.add_event_detect(priv.pinup, GPIO.BOTH, callback=state_change_hadler, bouncetime=100)
-      state = GPIO.PUD_DOWN()
-      log.info("Mapped pin {:0>2d} to {}".format(pin, name))
-      log.info("... state {}".format(state))
+      GPIO.setup(priv.pinup, GPIO.OUT, initial=0)
     elif 'on' in msg.payload:
       print 'Door up Turn On - enable GPIO Here'
-      GPIO.setup(7, GPIO.OUT, pull_up_down=GPIO.PUD_UP)
-      GPIO.add_event_detect(priv.pinup, GPIO.BOTH, callback=state_change_hadler, bouncetime=100)
-      state = GPIO.PUD_UP()
-      log.info("Mapped pin {:0>2d} to {}".format(pin, name))
-      log.info("... state {}".format(state))
+      GPIO.setup(priv-pinup, GPIO.OUT, initial=1)
   elif 'door-down' in msg.topic:
     if 'off' in msg.payload:
       print 'Door down Turn Off - disable GPIO Here'
-      GPIO.setup(priv.pindown, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-      GPIO.add_event_detect(priv.pindown, GPIO.BOTH, callback=state_change_hadler, bouncetime=100)
-      state = GPIO.PUD_DOWN()
-      log.info("Mapped pin {:0>2d} to {}".format(pin, name))
-      log.info("... state {}".format(state))
+      GPIO.setup(priv.pindown, GPIO.IN, initial=0)
     elif 'on' in msg.payload:
       print 'Door down Turn On - enable GPIO Here'
-      GPIO.setup(priv.pindown, GPIO.OUT, pull_up_down=GPIO.PUD_UP)
-      GPIO.add_event_detect(priv.pindown, GPIO.BOTH, callback=state_change_hadler, bouncetime=100)
-      state = GPIO.PUD_UP()
-      log.info("Mapped pin {:0>2d} to {}".format(pin, name))
-      log.info("... state {}".format(state))
+      GPIO.setup(priv.pindown, GPIO.OUT, initial=1)
 
 def subscribe_topic():
   client = mqtt.Client()
