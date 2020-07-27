@@ -36,15 +36,6 @@ PIN_MAP = {
 
 GPIO.setmode(GPIO.BOARD)
 
-
-def on_connect(client, userdata, flags, rc):
-  print("Connected with result code {0}".format(str(rc)))
-  client.subscribe("garagedoor")
-
-def on_message(client, userdata, msg):
-  print("Message received-> " + msg.topic + " " + str(msg.payload))  # Print a received msg
-
-
 def state_change_hadler(channel):
   state = GPIO.input(channel)
 
@@ -66,18 +57,6 @@ def publish_event(pin, state):
   log.info("Published event, topic={}, payload={}, hostname={}".format(topic, payload, MQTT_HOST))
   print ("Published event, topic={}, payload={}, hostname={}".format(topic, payload, MQTT_HOST))
 
-def subscribe_topic():
-
-  client = mqtt.Client("ha-mqqt")
-  client.on_connect = on_connect
-  client.on_message = on_message
-  client.connect('10.100.30.6', 1883 )
-  client.loop_forever()  # Start networking daemon
-
-  log.info("Subscribed to, topic={}, payload={}, hostname={}".format(topic, payload, MQTT_HOST))
-  print ("Subscribed to, topic={}, payload={}, hostname={}".format(topic, payload, MQTT_HOST))
-
-subscribe_topic()
 for pin, name in PIN_MAP.items():
   GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
   GPIO.add_event_detect(pin, GPIO.BOTH, callback=state_change_hadler, bouncetime=100)
