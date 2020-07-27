@@ -26,8 +26,8 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
   print("Message received-> " + msg.topic + " " + str(msg.payload))
-  if 'door-open' in msg.topic:
-    print 'door Open match - enable GPIO Here'
+  if 'door-up off' in msg.topic:
+    print 'Door up Turn Off - enable GPIO Here'
 
 def subscribe_topic():
   client = mqtt.Client()
