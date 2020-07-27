@@ -30,14 +30,14 @@ def on_message(client, userdata, msg):
     if 'off' in msg.payload:
       print 'Door up Turn Off - enable GPIO Here'
       GPIO.setup(7, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-      GPIO.add_event_detect(pin, GPIO.BOTH, callback=state_change_hadler, bouncetime=100)
+      GPIO.add_event_detect(7, GPIO.BOTH, callback=state_change_hadler, bouncetime=100)
       state = GPIO.input(7)
       log.info("Mapped pin {:0>2d} to {}".format(pin, name))
       log.info("... state {}".format(state))
     elif 'on' in msg.payload:
       print 'Door up Turn On - enable GPIO Here'
       GPIO.setup(7, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-      GPIO.add_event_detect(pin, GPIO.BOTH, callback=state_change_hadler, bouncetime=100)
+      GPIO.add_event_detect(7, GPIO.BOTH, callback=state_change_hadler, bouncetime=100)
       state = GPIO.input(7)
       log.info("Mapped pin {:0>2d} to {}".format(pin, name))
       log.info("... state {}".format(state))
@@ -45,14 +45,14 @@ def on_message(client, userdata, msg):
     if 'off' in msg.payload:
       print 'Door up Turn Off - enable GPIO Here'
       GPIO.setup(11, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-      GPIO.add_event_detect(pin, GPIO.BOTH, callback=state_change_hadler, bouncetime=100)
+      GPIO.add_event_detect(11, GPIO.BOTH, callback=state_change_hadler, bouncetime=100)
       state = GPIO.input(11)
       log.info("Mapped pin {:0>2d} to {}".format(pin, name))
       log.info("... state {}".format(state))
     elif 'on' in msg.payload:
       print 'Door up Turn On - enable GPIO Here'
       GPIO.setup(11, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-      GPIO.add_event_detect(pin, GPIO.BOTH, callback=state_change_hadler, bouncetime=100)
+      GPIO.add_event_detect(11, GPIO.BOTH, callback=state_change_hadler, bouncetime=100)
       state = GPIO.input(11)
       log.info("Mapped pin {:0>2d} to {}".format(pin, name))
       log.info("... state {}".format(state))
