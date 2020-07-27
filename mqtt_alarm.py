@@ -23,15 +23,7 @@ MQTT_PAYLOADS = {
 # Dictionary of GPIO PIN to mqtt topic
 PIN_MAP = {
   7: "door-up",
-  11: "door-down",
-  12: "12",
-  13: "13",
-  16: "16",
-  18: "18",
-  22: "22",
-  29: "29",
-  32: "32",
-  35: "35",
+  1: "door-down",
 }
 
 GPIO.setmode(GPIO.BOARD)
