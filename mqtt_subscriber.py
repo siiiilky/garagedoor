@@ -26,7 +26,7 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
   print("Message received-> " + msg.topic + " " + str(msg.payload))
-  if 'door-up off' in msg.topic:
+  if 'door-up off' in msg.payload:
     print 'Door up Turn Off - enable GPIO Here'
 
 def subscribe_topic():
