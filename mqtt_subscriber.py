@@ -41,7 +41,7 @@ def on_message(client, userdata, msg):
       state = GPIO.input(7)
       log.info("Mapped pin {:0>2d} to {}".format(pin, name))
       log.info("... state {}".format(state))
-  elif 'door-down' in msg-topic:
+  elif 'door-down' in msg.topic:
     if 'off' in msg.payload:
       print 'Door down Turn Off - enable GPIO Here'
       GPIO.setup(1, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
