@@ -60,7 +60,7 @@ def publish_event(pin, state):
 def subscribe_topic():
   topic = MQTT_TOPIC_PREFIX
 
-  subscribe.single(topic, hostname=MQTT_HOST, retain=True, qos=1, auth = {'username':"homeassistant", 'password':priv.password})
+  subscribe(topic, hostname=MQTT_HOST, retain=True, qos=1, auth = {'username':"homeassistant", 'password':priv.password})
 
   log.info("Subscribed to, topic={}, payload={}, hostname={}".format(topic, payload, MQTT_HOST))
   print ("Subscribed to, topic={}, payload={}, hostname={}".format(topic, payload, MQTT_HOST))
