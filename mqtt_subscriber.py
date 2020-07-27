@@ -25,6 +25,8 @@ def on_connect(client, userdata, flags, rc):
   client.subscribe(MQTT_TOPIC_PREFIX2)
 
 def on_message(client, userdata, msg):
+  GPIOup.setup(priv.pinup, GPIO.OUT, initial=0)
+  GPIOdown.setup(priv.pindown, GPIO.OUT, initial=0)
   print("Message received-> " + msg.topic + " " + str(msg.payload))
   if 'door-up' in msg.topic:
     if 'off' in msg.payload:
@@ -42,8 +44,6 @@ def on_message(client, userdata, msg):
       GPIOdown.output(priv.pindown, 1)
 
 def subscribe_topic():
-  GPIOup.setup(priv.pinup, GPIO.OUT, initial=0)
-  GPIOdown.setup(priv.pindown, GPIO.OUT, initial=0)
   client = mqtt.Client()
   client.on_connect = on_connect
   client.on_message = on_message
