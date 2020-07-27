@@ -34,9 +34,6 @@ def subscribe_topic():
   client.connect(MQTT_HOST, 1883)
   client.loop_forever()  # Start networking daemon
 
-  log.info("Subscribed to, topic={}, payload={}, hostname={}".format(topic, payload, MQTT_HOST))
-  print ("Subscribed to, topic={}, payload={}, hostname={}".format(topic, payload, MQTT_HOST))
-
 subscribe_topic()
 
 try:
