@@ -44,16 +44,16 @@ def on_message(client, userdata, msg):
   elif 'door-down' in msg.topic:
     if 'off' in msg.payload:
       print 'Door down Turn Off - enable GPIO Here'
-      GPIO.setup(1, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-      GPIO.add_event_detect(1, GPIO.BOTH, callback=state_change_hadler, bouncetime=100)
-      state = GPIO.input(1)
+      GPIO.setup(0, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+      GPIO.add_event_detect(0, GPIO.BOTH, callback=state_change_hadler, bouncetime=100)
+      state = GPIO.input(0)
       log.info("Mapped pin {:0>2d} to {}".format(pin, name))
       log.info("... state {}".format(state))
     elif 'on' in msg.payload:
       print 'Door down Turn On - enable GPIO Here'
-      GPIO.setup(1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-      GPIO.add_event_detect(1, GPIO.BOTH, callback=state_change_hadler, bouncetime=100)
-      state = GPIO.input(1)
+      GPIO.setup(0, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+      GPIO.add_event_detect(0, GPIO.BOTH, callback=state_change_hadler, bouncetime=100)
+      state = GPIO.input(0)
       log.info("Mapped pin {:0>2d} to {}".format(pin, name))
       log.info("... state {}".format(state))
 
