@@ -26,7 +26,7 @@ def on_message(client, userdata, msg):
   print("Message received-> " + msg.topic + " " + str(msg.payload))  # Print a received msg
 
 def subscribe_topic():
-
+  print "got here"
   client = mqtt.Client()
   client.on_connect = on_connect
   client.on_message = on_message
