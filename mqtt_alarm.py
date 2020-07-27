@@ -4,7 +4,7 @@ import private as priv
 import RPi.GPIO as GPIO
 import logging
 import paho.mqtt.publish as publish
-import paho.mqtt.subscribe as subscribe
+import paho.mqtt.client as mqtt.client
 from time import sleep
 from systemd.journal import JournalHandler
 
@@ -36,6 +36,16 @@ PIN_MAP = {
 
 GPIO.setmode(GPIO.BOARD)
 
+
+def on_connect(client, userdata, flags, rc):  # The callback for when the client connects to the broker
+  print("Connected with result code {0}".format(str(rc)))  # Print result of connection attempt
+  client.subscribe("digitest/test1")  # Subscribe to the topic “digitest/test1”, receive any messages published on it
+
+
+def on_message(client, userdata, msg):  # The callback for when a PUBLISH message is received from the server.
+  print("Message received-> " + msg.topic + " " + str(msg.payload))  # Print a received msg
+
+
 def state_change_hadler(channel):
   state = GPIO.input(channel)
 
@@ -60,7 +70,12 @@ def publish_event(pin, state):
 def subscribe_topic():
   topic = MQTT_TOPIC_PREFIX
 
-  subscribe(topic, hostname=MQTT_HOST, retain=True, qos=1, auth = {'username':"homeassistant", 'password':priv.password})
+  client = mqtt.Client("ha-mqqt")  # Create instance of client with client ID “digi_mqtt_test”
+  client.on_connect = on_connect  # Define callback function for successful connection
+  client.on_message = on_message  # Define callback function for receipt of a message
+  # client.connect("m2m.eclipse.org", 1883, 60)  # Connect to (broker, port, keepalive-time)
+  client.connect('10.100.30.6', 1883 )
+  client.loop_forever()  # Start networking daemon
 
   log.info("Subscribed to, topic={}, payload={}, hostname={}".format(topic, payload, MQTT_HOST))
   print ("Subscribed to, topic={}, payload={}, hostname={}".format(topic, payload, MQTT_HOST))
