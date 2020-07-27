@@ -25,7 +25,9 @@ def on_connect(client, userdata, flags, rc):
   client.subscribe(MQTT_TOPIC_PREFIX2)
 
 def on_message(client, userdata, msg):
-  print("Message received-> " + msg.topic + " " + str(msg.payload))  # Print a received msg
+  print("Message received-> " + msg.topic + " " + str(msg.payload))
+  if 'door-open' in msg.topic:
+    print 'door Open match - enable GPIO Here'
 
 def subscribe_topic():
   client = mqtt.Client()
