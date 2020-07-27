@@ -4,6 +4,7 @@ import private as priv
 import RPi.GPIO as GPIO
 import logging
 import paho.mqtt.publish as publish
+import paho.mqtt.subscribe as subscribe
 from time import sleep
 from systemd.journal import JournalHandler
 
@@ -55,6 +56,14 @@ def publish_event(pin, state):
 
   log.info("Published event, topic={}, payload={}, hostname={}".format(topic, payload, MQTT_HOST))
   print ("Published event, topic={}, payload={}, hostname={}".format(topic, payload, MQTT_HOST))
+
+def subscribe_event(pin, state):
+  topic = MQTT_TOPIC_PREFIX + PIN_MAP[pin]
+
+  subscribe.single(topic, hostname=MQTT_HOST, retain=True, qos=1, auth = {'username':"homeassistant", 'password':priv.password})
+
+  log.info("Subscribed to, topic={}, payload={}, hostname={}".format(topic, payload, MQTT_HOST))
+  print ("Subscribed to, topic={}, payload={}, hostname={}".format(topic, payload, MQTT_HOST))
 
 for pin, name in PIN_MAP.items():
   GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
