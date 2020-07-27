@@ -18,7 +18,7 @@ MQTT_TOPIC_PREFIX2 = "garagedoor/door-down"
 MQTT_CLIENT_ID = "garagepi"
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(priv.pindown, GPIO.OUT)
+GPIO.setup(17, GPIO.OUT)
 GPIO.setup(4, GPIO.OUT)
 
 def on_connect(client, userdata, flags, rc):
@@ -38,10 +38,10 @@ def on_message(client, userdata, msg):
   elif 'door-down' in msg.topic:
     if 'off' in msg.payload:
       print 'Door down Turn Off - disable GPIO Here'
-      GPIO.output(priv.pindown, 0)
+      GPIO.output(17, 0)
     elif 'on' in msg.payload:
       print 'Door down Turn On - enable GPIO Here'
-      GPIO.output(priv.pindown, 1)
+      GPIO.output(17, 1)
 
 
 def subscribe_topic():
