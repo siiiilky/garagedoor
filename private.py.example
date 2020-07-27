@@ -1,4 +1,4 @@
 username="homeassistant"
 password="mqttpassword"
 pinup=7
-pindown=13
+pindown=21
