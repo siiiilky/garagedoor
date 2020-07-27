@@ -17,8 +17,8 @@ MQTT_TOPIC_PREFIX = "garagedoor/door-up"
 MQTT_TOPIC_PREFIX2 = "garagedoor/door-down"
 MQTT_CLIENT_ID = "garagepi"
 
-GPIOup.setmode(GPIO.BOARD)
-GPIOdown.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BOARD)
 
 def on_connect(client, userdata, flags, rc):
   print("Connected with result code {0}".format(str(rc)))
@@ -26,10 +26,11 @@ def on_connect(client, userdata, flags, rc):
   client.subscribe(MQTT_TOPIC_PREFIX2)
 
 def on_message(client, userdata, msg):
-  GPIOup.setup(priv.pinup, GPIO.OUT, initial=0)
-  GPIOdown.setup(priv.pindown, GPIO.OUT, initial=0)
+
+
   print("Message received-> " + msg.topic + " " + str(msg.payload))
   if 'door-up' in msg.topic:
+    GPIO.setup(priv.pinup, GPIO.OUT)
     if 'off' in msg.payload:
       print 'Door up Turn Off - disable GPIO Here'
       GPIOup.output(priv.pinup, 1)
@@ -37,6 +38,7 @@ def on_message(client, userdata, msg):
       print 'Door up Turn On - enable GPIO Here'
       GPIOup.output(priv.pinup, 0)
   elif 'door-down' in msg.topic:
+    GPIO.setup(priv.pindown, GPIO.OUT)
     if 'off' in msg.payload:
       print 'Door down Turn Off - disable GPIO Here'
       GPIOdown.output(priv.pindown, 0)
