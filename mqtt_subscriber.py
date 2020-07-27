@@ -20,7 +20,7 @@ GPIO.setmode(GPIO.BOARD)
 
 def on_connect(client, userdata, flags, rc):
   print("Connected with result code {0}".format(str(rc)))
-  client.subscribe(MQQT_TOPIC_PREFIX)
+  client.subscribe(MQTT_TOPIC_PREFIX)
 
 def on_message(client, userdata, msg):
   print("Message received-> " + msg.topic + " " + str(msg.payload))  # Print a received msg
