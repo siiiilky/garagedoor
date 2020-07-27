@@ -27,7 +27,7 @@ def on_message(client, userdata, msg):
 
 def subscribe_topic():
 
-  client = mqtt.Client("ha-mqqt")
+  client = mqtt.Client()
   client.on_connect = on_connect
   client.on_message = on_message
   client.username_pw_set(username="homeassistant", password=priv.password)
