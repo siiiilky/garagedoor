@@ -13,7 +13,7 @@ log.addHandler(JournalHandler())
 log.setLevel(logging.INFO)
 
 MQTT_HOST = "10.100.30.6"
-MQTT_TOPIC_PREFIX = "garagedoor"
+MQTT_TOPIC_PREFIX = "garagedoor/door-up"
 MQTT_CLIENT_ID = "garagepi"
 
 GPIO.setmode(GPIO.BOARD)
@@ -26,7 +26,6 @@ def on_message(client, userdata, msg):
   print("Message received-> " + msg.topic + " " + str(msg.payload))  # Print a received msg
 
 def subscribe_topic():
-  print "got here"
   client = mqtt.Client()
   client.on_connect = on_connect
   client.on_message = on_message
