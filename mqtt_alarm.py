@@ -26,7 +26,7 @@ PIN_MAP = {
   17: "door-down",
 }
 
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BCM)
 
 def state_change_hadler(channel):
   state = GPIO.input(channel)
