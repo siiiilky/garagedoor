@@ -29,6 +29,8 @@ def on_message(client, userdata, msg):
   if 'door-up' in msg.topic:
     if 'off' in msg.payload:
       print 'Door up Turn Off - enable GPIO Here'
+    elif 'on' in msg.payload:
+      print 'Door up Turn On - enable GPIO Here'
 
 def subscribe_topic():
   client = mqtt.Client()
