@@ -4,7 +4,7 @@ import private as priv
 import RPi.GPIO as GPIO
 import logging
 import paho.mqtt.publish as publish
-import paho.mqtt.client as mqtt.client
+import paho.mqtt.client as mqtt
 from time import sleep
 from systemd.journal import JournalHandler
 
