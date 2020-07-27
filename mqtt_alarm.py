@@ -57,14 +57,15 @@ def publish_event(pin, state):
   log.info("Published event, topic={}, payload={}, hostname={}".format(topic, payload, MQTT_HOST))
   print ("Published event, topic={}, payload={}, hostname={}".format(topic, payload, MQTT_HOST))
 
-def subscribe_event(pin, state):
-  topic = MQTT_TOPIC_PREFIX + PIN_MAP[pin]
+def subscribe_topic():
+  topic = MQTT_TOPIC_PREFIX
 
   subscribe.single(topic, hostname=MQTT_HOST, retain=True, qos=1, auth = {'username':"homeassistant", 'password':priv.password})
 
   log.info("Subscribed to, topic={}, payload={}, hostname={}".format(topic, payload, MQTT_HOST))
   print ("Subscribed to, topic={}, payload={}, hostname={}".format(topic, payload, MQTT_HOST))
 
+subscribe_topic()
 for pin, name in PIN_MAP.items():
   GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
   GPIO.add_event_detect(pin, GPIO.BOTH, callback=state_change_hadler, bouncetime=100)
