@@ -31,7 +31,7 @@ def subscribe_topic():
   client = mqtt.Client()
   client.on_connect = on_connect
   client.on_message = on_message
-  client.username_pw_set(username="homeassistant", password=priv.password)
+  client.username_pw_set(username=priv.username, password=priv.password)
   client.connect(MQTT_HOST, 1883)
   client.loop_forever()  # Start networking daemon
 

@@ -52,7 +52,7 @@ def publish_event(pin, state):
   topic = MQTT_TOPIC_PREFIX + PIN_MAP[pin]
   payload = MQTT_PAYLOADS[state]
 
-  publish.single(topic, payload, hostname=MQTT_HOST, retain=True, qos=1, auth = {'username':"homeassistant", 'password':priv.password})
+  publish.single(topic, payload, hostname=MQTT_HOST, retain=True, qos=1, auth = {'username':priv.username, 'password':priv.password})
 
   log.info("Published event, topic={}, payload={}, hostname={}".format(topic, payload, MQTT_HOST))
   print ("Published event, topic={}, payload={}, hostname={}".format(topic, payload, MQTT_HOST))
