@@ -28,21 +28,24 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
   print("Message received-> " + msg.topic + " " + str(msg.payload))
   if 'door-up' in msg.topic:
-    GPIO.setup(priv.pinup, GPIO.OUT)
     if 'off' in msg.payload:
       print 'Door up Turn Off - disable GPIO Here'
-      GPIO.output(priv.pinup, 1)
+      GPIO.setup(priv.pinup, GPIO.OUT)
+      GPIO.output(priv.pinup, 0)
     elif 'on' in msg.payload:
       print 'Door up Turn On - enable GPIO Here'
-      GPIO.output(priv.pinup, 0)
+      GPIO.setup(priv.pinup, GPIO.OUT)
+      GPIO.output(priv.pinup, 1)
   elif 'door-down' in msg.topic:
-    GPIO.setup(priv.pindown, GPIO.OUT)
     if 'off' in msg.payload:
       print 'Door down Turn Off - disable GPIO Here'
+      GPIO.setup(priv.pindown, GPIO.OUT)
       GPIO.output(priv.pindown, 0)
     elif 'on' in msg.payload:
       print 'Door down Turn On - enable GPIO Here'
+      GPIO.setup(priv.pindown, GPIO.OUT)
       GPIO.output(priv.pindown, 1)
+  GPIO.cleanup()
 
 def subscribe_topic():
   client = mqtt.Client()
