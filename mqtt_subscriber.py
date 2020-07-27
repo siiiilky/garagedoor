@@ -34,7 +34,7 @@ def on_message(client, userdata, msg):
       GPIO.output(priv.pinup, 1)
     elif 'on' in msg.payload:
       print 'Door up Turn On - enable GPIO Here'
-      GPIOup.output(priv.pinup, 0)
+      GPIO.output(priv.pinup, 0)
   elif 'door-down' in msg.topic:
     GPIO.setup(priv.pindown, GPIO.OUT)
     if 'off' in msg.payload:
