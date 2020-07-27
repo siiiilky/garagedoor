@@ -1,4 +1,7 @@
-username="homeassistant"
-password="mqttpassword"
-pinup=4
-pindown=17
+MQTT_HOST = "10.100.30.6"
+MQTT_TOPIC_PREFIX = "garagedoor/door-up"
+MQTT_TOPIC_PREFIX2 = "garagedoor/door-down"
+username = "homeassistant"
+password = "mqttpassword"
+pinup = 4
+pindown = 17
