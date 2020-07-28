@@ -51,4 +51,5 @@ try:
 except KeyboardInterrupt:
   log.info("Stopping...")
 finally:
+  print "Cleanup"
   GPIO.cleanup()
