@@ -44,12 +44,12 @@ def subscribe_topic():
   client.on_message = on_message
   client.username_pw_set(username=priv.username, password=priv.password)
   client.connect(priv.MQTT_HOST, 1883)
-  client.loop_forever()  # Start networking daemon
+  client.loop_forever()
 
 try:
   subscribe_topic()
 except KeyboardInterrupt:
   log.info("Stopping...")
 finally:
-  print "Cleanup"
+  print "*** GPIO Cleanup ***"
   GPIO.cleanup()
