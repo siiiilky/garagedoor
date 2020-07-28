@@ -46,11 +46,8 @@ def subscribe_topic():
   client.connect(priv.MQTT_HOST, 1883)
   client.loop_forever()  # Start networking daemon
 
-subscribe_topic()
-
 try:
-  while True:
-    sleep(60)
+  subscribe_topic()
 except KeyboardInterrupt:
   log.info("Stopping...")
 finally:
