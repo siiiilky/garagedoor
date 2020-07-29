@@ -34,6 +34,7 @@
 import smbus
 import time
 import socket
+from requests import get
 
 hostname = socket.gethostname()
 IPAddr = socket.gethostbyname(hostname)
@@ -114,6 +115,11 @@ def main():
 
   # Initialise display
   lcd_init()
+  url = "http://10.100.30.6:8123/api/group.people"
+  headers = {
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIwOGU4ZjI4NjFmMDc0NTFkOTQwYTA3MGM3ZGNmOWQwYyIsImlhdCI6MTU5NjAyNjIxMiwiZXhwIjoxOTExMzg2MjEyfQ.UJs4WBkZv89aIaiy3_XmcO8Ga5R0ZoH1EYOevPgPkuk",
+    "content-type": "application/json",
+  }
 
   while True:
     t = time.localtime()
@@ -122,6 +128,9 @@ def main():
     lcd_string("Host: " + hostname,LCD_LINE_1)
     lcd_string("IP  : " + IPAddr ,LCD_LINE_2)
     lcd_string("            " + current_time, LCD_LINE_4)
+    # Get presence status for home
+    response = get(url, headers=headers)
+    print(response.text)
     time.sleep(1)
 
 if __name__ == '__main__':
