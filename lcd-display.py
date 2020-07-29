@@ -130,7 +130,7 @@ def main():
     # Get presence status for home
     response = get(url, headers=headers)
     print(response.text)
-    print response.keys()
+    print response.text.keys()
     time.sleep(60)
 
 if __name__ == '__main__':
