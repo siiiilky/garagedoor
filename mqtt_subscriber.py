@@ -22,10 +22,8 @@ def on_connect(client, userdata, flags, rc):
   client.subscribe(priv.MQTT_TOPIC_PREFIX2)
 
 def on_message(client, userdata, msg):
-  dateTimeObj = datetime.now()
-  timestampStr = dateTimeObj.strftime("%d-%b-%Y (%H:%M:%S.%f)")
-  print(timestampstr + " : Message received-> " + msg.topic + " " + str(msg.payload))
-  log.info(timestampStr + " : Message received-> " + msg.topic + " " + str(msg.payload))
+  print("Message received-> " + msg.topic + " " + str(msg.payload))
+  log.info("Message received-> " + msg.topic + " " + str(msg.payload))
   if 'door-up' in msg.topic:
     if 'off' in msg.payload:
       print 'Door up Turn Off - disabling GPIO'
