@@ -120,7 +120,9 @@ def main():
     "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIwOGU4ZjI4NjFmMDc0NTFkOTQwYTA3MGM3ZGNmOWQwYyIsImlhdCI6MTU5NjAyNjIxMiwiZXhwIjoxOTExMzg2MjEyfQ.UJs4WBkZv89aIaiy3_XmcO8Ga5R0ZoH1EYOevPgPkuk",
     "content-type": "application/json",
   }
-
+  # Get presence status for home
+  response = get(url, headers=headers)
+  print(response.text)
   while True:
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
@@ -129,8 +131,6 @@ def main():
     lcd_string("IP  : " + IPAddr ,LCD_LINE_2)
     lcd_string("            " + current_time, LCD_LINE_4)
     # Get presence status for home
-    response = get(url, headers=headers)
-    print(response.text)
     time.sleep(1)
 
 if __name__ == '__main__':
