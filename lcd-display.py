@@ -31,6 +31,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #--------------------------------------
+# Some additions and customisation - stevec@couttsnet.com - 29/07/2020
+#
 import smbus
 import time
 import socket
@@ -128,7 +130,7 @@ def main():
     # Send some text
     lcd_string("IP    : " + IPAddr,LCD_LINE_1)
     lcd_string("               " + current_time, LCD_LINE_4)
-    # Get presence status for home
+    # Get presence status for home and alarm status
     response = get(url, headers=headers)
     responseAlarm = get(urlAlarm, headers=headers)
     json_data = json.loads(response.text)
