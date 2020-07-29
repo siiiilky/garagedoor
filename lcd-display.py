@@ -131,7 +131,10 @@ def main():
     # Get presence status for home
     response = get(url, headers=headers)
     json_data = json.loads(response.text)
-    print json_data["state"]
+    if json_data["state"] == "home"
+      lcd_string("Someone is HOME" + IPAddr, LCD_LINE_3)
+    elifif json_data["state"] == "not_home"
+      lcd_string("Everyone is AWAY" + IPAddr, LCD_LINE_3)
     time.sleep(60)
 
 if __name__ == '__main__':
