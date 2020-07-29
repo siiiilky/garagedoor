@@ -35,8 +35,6 @@ import smbus
 import time
 import socket
 
-t = time.localtime()
-current_time = time.strftime("%H:%M:%S", t)
 hostname = socket.gethostname()
 IPAddr = socket.gethostbyname(hostname)
 
@@ -118,12 +116,13 @@ def main():
   lcd_init()
 
   while True:
+    t = time.localtime()
+    current_time = time.strftime("%H:%M:%S", t)
     # Send some text
     lcd_string("Host: " + hostname,LCD_LINE_1)
     lcd_string("IP  : " + IPAddr ,LCD_LINE_2)
-    while True:
-        lcd_string(current_time, LCD_LINE_4)
-        time.sleep(1)
+    lcd_string(current_time, LCD_LINE_4)
+    time.sleep(1)
 
 if __name__ == '__main__':
 
