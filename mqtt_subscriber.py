@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 # Steven Coutts - stevec@couttsnet.com
 #
 # 29/07/2020
@@ -5,8 +7,6 @@
 # Do stuff based on received messages.
 # Beginnings of LCD control functionality.
 #
-
-#!/usr/bin/python
 
 import private as priv
 import lcd as lcd
