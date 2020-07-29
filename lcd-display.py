@@ -115,7 +115,7 @@ def main():
 
   # Initialise display
   lcd_init()
-  url = "http://10.100.30.6:8123/api/group.people"
+  url = "http://10.100.30.6:8123/api/states/group.people"
   headers = {
     "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIwOGU4ZjI4NjFmMDc0NTFkOTQwYTA3MGM3ZGNmOWQwYyIsImlhdCI6MTU5NjAyNjIxMiwiZXhwIjoxOTExMzg2MjEyfQ.UJs4WBkZv89aIaiy3_XmcO8Ga5R0ZoH1EYOevPgPkuk",
     "content-type": "application/json",
