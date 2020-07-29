@@ -131,7 +131,7 @@ def main():
     # Get presence status for home
     response = get(url, headers=headers)
     json_data = json.loads(response.text)
-    print json_data
+    print json_data["state"]
     time.sleep(60)
 
 if __name__ == '__main__':
