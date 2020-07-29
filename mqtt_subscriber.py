@@ -3,10 +3,10 @@
 import private as priv
 import RPi.GPIO as GPIO
 import logging
-import paho.mqtt.publish as publish
 import paho.mqtt.client as mqtt
 from time import sleep
 from systemd.journal import JournalHandler
+from datetime import datetime
 
 log = logging.getLogger('mqtt_alarm')
 log.addHandler(JournalHandler())
@@ -24,7 +24,7 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
   dateTimeObj = datetime.now()
   timestampStr = dateTimeObj.strftime("%d-%b-%Y (%H:%M:%S.%f)")
-  print(timestampStr + " : Message received-> " + msg.topic + " " + str(msg.payload))
+  print(timestampstr + " : Message received-> " + msg.topic + " " + str(msg.payload))
   log.info(timestampStr + " : Message received-> " + msg.topic + " " + str(msg.payload))
   if 'door-up' in msg.topic:
     if 'off' in msg.payload:
