@@ -7,6 +7,7 @@ pinup = 4
 pindown = 17
 url = "http://192.168.1.10:8123/api/states/group.people"
 urlAlarm = "http://192.168.1.10:8123/api/states/alarm_control_panel.alarm_control_panel"
+urlGarageDoor = "http://192.168.1.10:8123/api/states/binary_sensor.garage_door_contact"
 headers = {
   "Authorization": "Bearer randomkey",
   "content-type": "application/json",

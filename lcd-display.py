@@ -123,12 +123,13 @@ def main():
     current_time = time.strftime("%H:%M", t)
     # Send some text
     lcd_string("IP    : " + IPAddr,LCD_LINE_1)
-    lcd_string("               " + current_time, LCD_LINE_4)
     # Get presence status for home and alarm status
     response = get(priv.url, headers=priv.headers)
     responseAlarm = get(priv.urlAlarm, headers=priv.headers)
+    responseGarageDoor = get(priv.urlGarageDoor, headers=priv.headers)
     json_data = json.loads(response.text)
     json_dataAlarm = json.loads(responseAlarm.text)
+    json_dataGarageDoor = json.loads(responseGarageDoor.text)
     if json_data["state"] == "home":
       lcd_string("Someone is HOME", LCD_LINE_3)
     elif json_data["state"] == "not_home":
@@ -137,7 +138,11 @@ def main():
       lcd_string("Alarm : DISARMED", LCD_LINE_2)
     else:
       lcd_string("Alarm : ARMED", LCD_LINE_2)
-    time.sleep(60)
+    if json_dataGarageDoor["state"] == "Closed":
+      lcd_string("Garage : CLOSED", LCD_LINE_4)
+    else:
+      lcd_string("Garage : OPEN", LCD_LINE_4)
+    time.sleep(30)
 
 if __name__ == '__main__':
 
