@@ -127,7 +127,6 @@ def main():
     current_time = time.strftime("%H:%M", t)
     # Send some text
     lcd_string("IP    : " + IPAddr,LCD_LINE_1)
-    lcd_string("Alarm : DISARMED", LCD_LINE_2)
     lcd_string("               " + current_time, LCD_LINE_4)
     # Get presence status for home
     response = get(url, headers=headers)
