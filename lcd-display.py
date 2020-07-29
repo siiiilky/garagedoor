@@ -117,7 +117,7 @@ def main():
   # Initialise display
   lcd_init()
   url = "http://10.100.30.6:8123/api/states/group.people"
-  url = "http://10.100.30.6:8123/api/states/group.people"
+  urlAlarm = "http://10.100.30.6:8123/api/states/alarm_control_panel.26_englemann_way_alarm_control_panel"
   headers = {
     "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIwOGU4ZjI4NjFmMDc0NTFkOTQwYTA3MGM3ZGNmOWQwYyIsImlhdCI6MTU5NjAyNjIxMiwiZXhwIjoxOTExMzg2MjEyfQ.UJs4WBkZv89aIaiy3_XmcO8Ga5R0ZoH1EYOevPgPkuk",
     "content-type": "application/json",
@@ -131,11 +131,17 @@ def main():
     lcd_string("               " + current_time, LCD_LINE_4)
     # Get presence status for home
     response = get(url, headers=headers)
+    responseAlarm = get(urlAlarm, headers=headers)
     json_data = json.loads(response.text)
+    json_dataAlarm = json.loads(responseAlarm.text)
     if json_data["state"] == "home":
       lcd_string("Someone is HOME", LCD_LINE_3)
     elif json_data["state"] == "not_home":
       lcd_string("Everyone is AWAY", LCD_LINE_3)
+    if json_dataAlarm["state"] == "disarmed":
+      lcd_string("Alarm : DISARMED", LCD_LINE_2)
+    else
+      lcd_string("Alarm : ARMED", LCD_LINE_2)
     time.sleep(60)
 
 if __name__ == '__main__':
