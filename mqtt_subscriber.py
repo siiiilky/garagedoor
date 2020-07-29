@@ -1,3 +1,9 @@
+# Steven Coutts - stevec@couttsnet.com
+#
+# 29/07/2020
+# Script to subscribe to a few MQTT topics on Home Assistant, and do stuff based on received messages.
+# Beginnings of LCD control functionality.
+#
 #!/usr/bin/python
 
 import private as priv
