@@ -35,6 +35,7 @@ import smbus
 import time
 import socket
 import time
+import sleep
 
 t = time.localtime()
 current_time = time.strftime("%H:%M:%S", t)
