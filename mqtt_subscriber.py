@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import private as priv
+import lcd as lcd
 import RPi.GPIO as GPIO
 import logging
 import paho.mqtt.client as mqtt
