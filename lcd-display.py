@@ -34,6 +34,7 @@
 import smbus
 import time
 import socket
+import json
 from requests import get
 
 hostname = socket.gethostname()
@@ -129,8 +130,8 @@ def main():
     lcd_string("            " + current_time, LCD_LINE_4)
     # Get presence status for home
     response = get(url, headers=headers)
-    print(response.text)
-    print response.text(state)
+    json_data = json.loads(response.text)
+    print json_data
     time.sleep(60)
 
 if __name__ == '__main__':
