@@ -117,6 +117,7 @@ def main():
   # Initialise display
   lcd_init()
   url = "http://10.100.30.6:8123/api/states/group.people"
+  url = "http://10.100.30.6:8123/api/states/group.people"
   headers = {
     "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIwOGU4ZjI4NjFmMDc0NTFkOTQwYTA3MGM3ZGNmOWQwYyIsImlhdCI6MTU5NjAyNjIxMiwiZXhwIjoxOTExMzg2MjEyfQ.UJs4WBkZv89aIaiy3_XmcO8Ga5R0ZoH1EYOevPgPkuk",
     "content-type": "application/json",
@@ -125,9 +126,9 @@ def main():
     t = time.localtime()
     current_time = time.strftime("%H:%M", t)
     # Send some text
-    lcd_string("Host: " + hostname,LCD_LINE_1)
-    lcd_string("IP  : " + IPAddr ,LCD_LINE_2)
-    lcd_string("            " + current_time, LCD_LINE_4)
+    lcd_string("IP    : " + IPAddr,LCD_LINE_1)
+    lcd_string("Alarm : DISARMED", LCD_LINE_2)
+    lcd_string("               " + current_time, LCD_LINE_4)
     # Get presence status for home
     response = get(url, headers=headers)
     json_data = json.loads(response.text)
