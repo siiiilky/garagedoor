@@ -139,7 +139,7 @@ def main():
       lcd_string("Everyone is AWAY", LCD_LINE_3)
     if json_dataAlarm["state"] == "disarmed":
       lcd_string("Alarm : DISARMED", LCD_LINE_2)
-    else
+    else:
       lcd_string("Alarm : ARMED", LCD_LINE_2)
     time.sleep(60)
 
