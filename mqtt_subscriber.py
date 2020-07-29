@@ -24,8 +24,8 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
   dateTimeObj = datetime.now()
   timestampStr = dateTimeObj.strftime("%d-%b-%Y (%H:%M:%S.%f)")
-  print(timestampStr, "Message received-> " + msg.topic + " " + str(msg.payload))
-  log.info(timestampStr, "Message received-> " + msg.topic + " " + str(msg.payload))
+  print(timestampStr + " : Message received-> " + msg.topic + " " + str(msg.payload))
+  log.info(timestampStr + " : Message received-> " + msg.topic + " " + str(msg.payload))
   if 'door-up' in msg.topic:
     if 'off' in msg.payload:
       print 'Door up Turn Off - disabling GPIO'
