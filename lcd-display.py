@@ -34,6 +34,11 @@
 import smbus
 import time
 import socket
+from datetime import datetime
+import pytz
+
+tz_London = pytz.timezone('Europe/London')
+datetime_London = datetime.now(tz_London)
 hostname = socket.gethostname()
 IPAddr = socket.gethostbyname(hostname)
 
@@ -118,6 +123,8 @@ def main():
     # Send some text
     lcd_string("Host: " + hostname,LCD_LINE_1)
     lcd_string("IP  : " + IPAddr ,LCD_LINE_2)
+    lcd_string(datetime_London.strftime("%H:%M:%S"), LCD_LINE_4)
+    sleep(1)
 
 if __name__ == '__main__':
 
