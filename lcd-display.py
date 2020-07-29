@@ -121,7 +121,7 @@ def main():
     # Send some text
     lcd_string("Host: " + hostname,LCD_LINE_1)
     lcd_string("IP  : " + IPAddr ,LCD_LINE_2)
-    lcd_string(current_time, LCD_LINE_4)
+    lcd_string("            " + current_time, LCD_LINE_4)
     time.sleep(1)
 
 if __name__ == '__main__':
