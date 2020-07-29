@@ -115,12 +115,9 @@ def main():
   lcd_init()
 
   while True:
-
-    # Send some test
-    lcd_string("Hostname   : " + hostname,LCD_LINE_1)
-    lcd_string("IP Address : " + IPAddr ,LCD_LINE_2)
-
-    time.sleep(3)
+    # Send some text
+    lcd_string("Host: " + hostname,LCD_LINE_1)
+    lcd_string("IP  : " + IPAddr ,LCD_LINE_2)
 
 if __name__ == '__main__':
 
