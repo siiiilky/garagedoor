@@ -62,9 +62,9 @@ def on_message(client, userdata, msg):
       lcd.lcd_string("Garage Door CLOSED", lcd.LCD_LINE_3)
   elif 'home' in msg.topic:
     if 'off' in msg.payload:
-      lcd.lcd_string("Everyone is AWAY", lcd.LCD_LINE_3)
+      lcd.lcd_string("Everyone is AWAY", lcd.LCD_LINE_4)
     elif 'on' in msg.payload:
-      lcd.lcd_string("Someone is HOME", lcd.LCD_LINE_3)
+      lcd.lcd_string("Someone is HOME", lcd.LCD_LINE_4)
 
 def subscribe_topic():
   # Initialise display
