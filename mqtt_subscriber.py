@@ -54,14 +54,17 @@ def on_message(client, userdata, msg):
       GPIO.output(priv.pindown, 0)
   elif 'alarm' in msg.topic:
     if 'off' in msg.payload:
-      print 'Alarm DISARMED'
+      lcd.lcd_string("Alarm DISARMED " + IPAddr, lcd.LCD_LINE_2)
     elif 'on' in msg.payload:
-      print 'Alarm ARMED'
+      lcd.lcd_string("Alarm ARMED " + IPAddr, lcd.LCD_LINE_2)
 
 def subscribe_topic():
   # Initialise display
   lcd.lcd_init()
   lcd.lcd_string("IP " + IPAddr, lcd.LCD_LINE_1)
+  lcd.lcd_string("Alarm UNKNOWN", lcd.LCD_LINE_2)
+  lcd.lcd_string("Garage Door UNKNOWN", lcd.LCD_LINE_3)
+  lcd.lcd_string("Someone is HOME", lcd.LCD_LINE_4)
   client = mqtt.Client()
   client.on_connect = on_connect
   client.on_message = on_message
