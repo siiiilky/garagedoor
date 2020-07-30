@@ -61,7 +61,7 @@ def on_message(client, userdata, msg):
 def subscribe_topic():
   # Initialise display
   lcd.lcd_init()
-  lcd_string("IP " + IPAddr, lcd.LCD_LINE_1)
+  lcd.lcd_string("IP " + IPAddr, lcd.LCD_LINE_1)
   client = mqtt.Client()
   client.on_connect = on_connect
   client.on_message = on_message
