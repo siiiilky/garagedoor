@@ -50,9 +50,14 @@ def on_message(client, userdata, msg):
       GPIO.output(priv.pindown, 0)
   elif 'alarm' in msg.topic:
     if 'off' in msg.payload:
-      lcd.lcd_string("Alarm DISARMED " + IPAddr, lcd.LCD_LINE_2)
+      lcd.lcd_string("Alarm DISARMED", lcd.LCD_LINE_2)
     elif 'on' in msg.payload:
-      lcd.lcd_string("Alarm ARMED " + IPAddr, lcd.LCD_LINE_2)
+      lcd.lcd_string("Alarm ARMED", lcd.LCD_LINE_2)
+  elif 'garage' in msg.topic:
+    if 'off' in msg.payload:
+      lcd.lcd_string("Garage Door OPEN", lcd.LCD_LINE_3)
+    elif 'on' in msg.payload:
+      lcd.lcd_string("Garage Door CLOSED", lcd.LCD_LINE_3)
 
 def subscribe_topic():
   # Initialise display
