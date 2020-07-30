@@ -138,7 +138,7 @@ def main():
       lcd_string("Alarm DISARMED", LCD_LINE_3)
     else:
       lcd_string("Alarm ARMED", LCD_LINE_3)
-    if json_dataGarageDoor["state"] == "Closed":
+    if json_dataGarageDoor["state"] == "off":
       lcd_string("Garage CLOSED", LCD_LINE_2)
     else:
       lcd_string("Garage OPEN", LCD_LINE_2)
