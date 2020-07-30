@@ -142,7 +142,7 @@ def main():
       lcd_string("Garage CLOSED", LCD_LINE_2)
     else:
       lcd_string("Garage OPEN", LCD_LINE_2)
-    time.sleep(30)
+    time.sleep(240)
 
 if __name__ == '__main__':
 
