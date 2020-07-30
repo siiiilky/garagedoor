@@ -1,7 +1,7 @@
 MQTT_HOST = "192.168.1.10"
 MQTT_TOPIC_PREFIX = "garagedoor/door-up"
 MQTT_TOPIC_PREFIX2 = "garagedoor/door-down"
-MQTT_TOPIC_PREFIX_LCD = "lcd/alarm"
+MQTT_TOPIC_PREFIX_ALARM = "lcd/alarm"
 username = "homeassistant"
 password = "mqttpassword"
 pinup = 4
