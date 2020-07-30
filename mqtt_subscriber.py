@@ -29,6 +29,7 @@ def on_connect(client, userdata, flags, rc):
   print("Connected with result code {0}".format(str(rc)))
   client.subscribe(priv.MQTT_TOPIC_PREFIX)
   client.subscribe(priv.MQTT_TOPIC_PREFIX2)
+  client.subscribe(priv.MQTT_TOPIC_PREFIX_ALARM)
 
 def on_message(client, userdata, msg):
   print("Message received-> " + msg.topic + " " + str(msg.payload))
@@ -47,6 +48,11 @@ def on_message(client, userdata, msg):
     elif 'on' in msg.payload:
       print 'Door down Turn On - enabling GPIO '
       GPIO.output(priv.pindown, 0)
+  if 'lcd-alarm' in msg.topic:
+    if 'off' in msg.payload:
+      print 'Alarm DISARMED'
+    elif 'on' in msg.payload:
+      print 'Alarm ARMED'
 
 def subscribe_topic():
   client = mqtt.Client()
