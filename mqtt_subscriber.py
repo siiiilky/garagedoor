@@ -7,6 +7,8 @@
 # Do stuff based on received messages.
 # Beginnings of LCD control functionality.
 #
+# 30/07/2020
+# LCD display updated now on MQTT events received
 
 import private as priv
 import lcd as lcd
