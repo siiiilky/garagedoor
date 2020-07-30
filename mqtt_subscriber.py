@@ -40,17 +40,13 @@ def on_message(client, userdata, msg):
   log.info("Message received-> " + msg.topic + " " + str(msg.payload))
   if 'door-up' in msg.topic:
     if 'off' in msg.payload:
-      print 'Door up Turn Off - disabling GPIO'
       GPIO.output(priv.pinup, 1)
     elif 'on' in msg.payload:
-      print 'Door up Turn On - enabling GPIO'
       GPIO.output(priv.pinup, 0)
   elif 'door-down' in msg.topic:
     if 'off' in msg.payload:
-      print 'Door down Turn Off - disabling GPIO'
       GPIO.output(priv.pindown, 1)
     elif 'on' in msg.payload:
-      print 'Door down Turn On - enabling GPIO '
       GPIO.output(priv.pindown, 0)
   elif 'alarm' in msg.topic:
     if 'off' in msg.payload:
