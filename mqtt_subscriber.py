@@ -34,6 +34,7 @@ def on_connect(client, userdata, flags, rc):
   client.subscribe(priv.MQTT_TOPIC_PREFIX)
   client.subscribe(priv.MQTT_TOPIC_PREFIX2)
   client.subscribe(priv.MQTT_TOPIC_PREFIX_ALARM)
+  client.subscribe(priv.MQTT_TOPIC_PREFIX_GARAGE)
 
 def on_message(client, userdata, msg):
   print("Message received-> " + msg.topic + " " + str(msg.payload))
