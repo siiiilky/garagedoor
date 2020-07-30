@@ -76,4 +76,4 @@ except KeyboardInterrupt:
 finally:
   print "*** GPIO Cleanup ***"
   GPIO.cleanup()
-  lcd_byte(0x01, LCD_CMD)
+  lcd.lcd_byte(0x01, lcd.LCD_CMD)
