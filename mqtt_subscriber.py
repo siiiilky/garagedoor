@@ -16,10 +16,12 @@ import paho.mqtt.client as mqtt
 from time import sleep
 from systemd.journal import JournalHandler
 from datetime import datetime
+import socket
 
 log = logging.getLogger('mqtt_alarm')
 log.addHandler(JournalHandler())
 log.setLevel(logging.INFO)
+IPAddr = socket.gethostbyname(hostname)
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(priv.pindown, GPIO.OUT)
@@ -55,6 +57,9 @@ def on_message(client, userdata, msg):
       print 'Alarm ARMED'
 
 def subscribe_topic():
+  # Initialise display
+  lcd.lcd_init()
+  lcd_string("IP " + IPAddr, lcd.LCD_LINE_1)
   client = mqtt.Client()
   client.on_connect = on_connect
   client.on_message = on_message
@@ -69,3 +74,4 @@ except KeyboardInterrupt:
 finally:
   print "*** GPIO Cleanup ***"
   GPIO.cleanup()
+  lcd_byte(0x01, LCD_CMD)
