@@ -48,7 +48,7 @@ def on_message(client, userdata, msg):
     elif 'on' in msg.payload:
       print 'Door down Turn On - enabling GPIO '
       GPIO.output(priv.pindown, 0)
-  if 'alarm' in msg.topic:
+  elif 'alarm' in msg.topic:
     if 'off' in msg.payload:
       print 'Alarm DISARMED'
     elif 'on' in msg.payload:
