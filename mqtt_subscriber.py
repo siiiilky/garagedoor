@@ -21,6 +21,8 @@ import socket
 log = logging.getLogger('mqtt_alarm')
 log.addHandler(JournalHandler())
 log.setLevel(logging.INFO)
+
+hostname = socket.gethostname()
 IPAddr = socket.gethostbyname(hostname)
 
 GPIO.setmode(GPIO.BCM)
